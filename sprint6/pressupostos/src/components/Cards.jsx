@@ -1,29 +1,39 @@
 import React from "react";
-import useCheckbox from "../hooks/useCheckbox.jsx";
+import useCheckbox from "../hooks/useCheckbox";
+import './Cards.css'
 
-export default function Cards() {
+export default function Cards({ handleCheckboxChange }) {
   const checkboxData = useCheckbox();
 
   return (
-    <header>
-        <div>
-            <h1>
-                Aconsegueix la millor qualitat
-            </h1>
+
+    <article className="container">
+      <header>
+        <div className="title-container">
+          <h1 className="title">Aconsegueix la millor qualitat</h1>
         </div>
-      {checkboxData.map((item, index) => (
-        <div key={index}>
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-          <h1>{item.price}</h1>
-          <label>
-            <input type="checkbox" id={`cbox${index}`} value={item.checkbox} /> Afegir
-          </label>
+        <div className="card-container">
+          {checkboxData.map((item, index) => (
+            <div key={index} className="card">
+              <div className="card-content">
+                <h2 className="card-tecnology">{item.title}</h2>
+                <p className="card-description">{item.description}</p>
+              </div>
+              <h3 className="card-price">{item.price} €</h3>
+              <div className="card-checkbox">
+                <input
+                  type="checkbox"
+                  id={`cbox${index}`}
+                  checked={item.checkbox}
+                  onChange={() => handleCheckboxChange(index)}
+                />
+                <label htmlFor={`cbox${index}`}>Afegir</label>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-      <div>
-        
-      </div>
-    </header>
+      </header>
+    </article>
+
   );
 }

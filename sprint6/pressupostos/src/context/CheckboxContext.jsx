@@ -1,10 +1,9 @@
-import { createContext} from "react";
+import { createContext, useContext } from "react";
 
-const CheckboxContext = createContext({
-    title: null,
-    description: null,
-    price: null,
-    checkbox: null,
-});
+const CheckboxContext = createContext([]);
+
+export const useCheckbox = () => {
+  return useContext(CheckboxContext);
+};
 
 export default CheckboxContext;
