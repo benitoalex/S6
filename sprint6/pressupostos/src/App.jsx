@@ -3,7 +3,6 @@ import CheckboxContext from "./context/CheckboxContext.jsx";
 import Cards from "./components/Cards.jsx";
 import './App.css'
 
-
 function App() {
   const [checkboxData, setCheckboxData] = useState([
     {
@@ -26,6 +25,9 @@ function App() {
     }
   ]);
 
+  const [costTotal, setCostTotal] = useState(0);
+  const [webPageCalculatorTotal, setWebPageCalculatorTotal] = useState(0); // Nuevo estado para el costo total de WebPageCalculator
+
   const handleCheckboxChange = (index) => {
     const newData = [...checkboxData];
     newData[index].checkbox = !newData[index].checkbox;
@@ -41,11 +43,20 @@ function App() {
     }, 0);
   }, [checkboxData]);
 
+  // Sumamos totalPrice y costTotal para obtener el costo total combinado
+  const combinedTotal = totalPrice + costTotal + webPageCalculatorTotal;
+
   return (
     <CheckboxContext.Provider value={checkboxData}>
       <div className='App'>
-        <Cards handleCheckboxChange={handleCheckboxChange}  />
-        <h2 className="total-price">Preu pressupostat:{totalPrice} €</h2>
+        {/* Pasamos costTotal y handleCostTotalChange como props al componente Cards */}
+        <Cards 
+          handleCheckboxChange={handleCheckboxChange} 
+          costTotal={costTotal} 
+          setCostTotal={setCostTotal} 
+          setWebPageCalculatorTotal={setWebPageCalculatorTotal} // Pasamos setWebPageCalculatorTotal como prop
+        />
+        <h2 className="total-price">Preu pressupostat: {combinedTotal} €</h2>
       </div>
     </CheckboxContext.Provider>
   );
