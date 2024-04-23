@@ -72,9 +72,9 @@
   font-weight: bold;
 }
 .web-page-calculator-container {
-  /* Estilos para el contenedor de WebPageCalculator */
+  
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinea los elementos dentro de WebPageCalculator en disposición vertical */
+  align-items: flex-start; 
 }
 
