@@ -43,20 +43,17 @@ function App() {
     }, 0);
   }, [checkboxData]);
 
-  // Sumamos totalPrice y costTotal para obtener el costo total combinado
   const combinedTotal = totalPrice + costTotal + webPageCalculatorTotal;
 
   return (
     <CheckboxContext.Provider value={checkboxData}>
       <div className='App'>
-        {/* Pasamos costTotal y handleCostTotalChange como props al componente Cards */}
         <Cards 
           handleCheckboxChange={handleCheckboxChange} 
           costTotal={costTotal} 
           setCostTotal={setCostTotal} 
-          setWebPageCalculatorTotal={setWebPageCalculatorTotal} // Pasamos setWebPageCalculatorTotal como prop
+          setWebPageCalculatorTotal={setWebPageCalculatorTotal} 
         />
-        <h2 className="total-price">Preu pressupostat: {combinedTotal} €</h2>
       </div>
     </CheckboxContext.Provider>
   );

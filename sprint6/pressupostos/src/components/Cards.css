@@ -19,6 +19,8 @@
 }
 .card {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     margin: 10px;
     padding: 10px;
@@ -32,6 +34,7 @@
 }
 .card-content {
     margin-left: 20px;
+    flex-grow: 1;
 }
 .card-title {
     font-size: large;
@@ -64,4 +67,14 @@
 .checkbox-wrapper input[type="checkbox"] {
     margin-right: 5px;
   }
-  
+.total-price {
+  justify-content: center;
+  font-weight: bold;
+}
+.web-page-calculator-container {
+  /* Estilos para el contenedor de WebPageCalculator */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea los elementos dentro de WebPageCalculator en disposición vertical */
+}
+
